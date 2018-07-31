@@ -1,0 +1,45 @@
+.align {
+    margin-top: 50px;
+    margin-left: 250px;
+    width: 45%;
+    height: 60%;
+    background-color: black;
+}
+
+input {
+    width: 500px;
+    
+}
+
+label {
+    margin-top: 10px;
+    color: white;
+    margin-left: 50px;
+    margin-bottom: -10px;
+}
+
+select {
+    width: 500px;
+    margin-left: 50px;
+}
+
+button {
+    margin-top: 20px;
+    margin-right: 45px;
+    width: 200px;
+    margin-left: 50px;
+    color: blue;
+    font-size: 18px;
+}
+
+.right {
+    margin-left: 40px;
+    margin-top: 40px;
+}
+
+.alert {
+    color: red;
+    margin-left: 5px;
+    margin-top: -10px;
+    margin-bottom: -15px;
+}
