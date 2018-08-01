@@ -15,12 +15,13 @@
     
       <div class="alert" 
       *ngIf="!rForm.valid && valid">
-        <div class="alert" 
-        *ngIf="rForm.get('password').hasError('required')">
+
+      <!-- Using Property binding, Display the error message -->
+      <div class="alert" [hidden] = "!errorAlert(rForm,'password','required')">
         {{ passwordRequired }}
       </div>
-      <div class="alert" 
-        *ngIf="rForm.get('password').hasError('pattern')">
+      
+      <div class="alert" [hidden] = "!errorAlert(rForm,'password','pattern')">
         {{ passwordMatch }}
       </div>
       </div>
@@ -69,14 +70,18 @@
 
 
 <ng-template #forminfo>
-  <div class="form-container">
-    <div class="row columns">
-      <div class="right">
-        <h1>Email: {{ email }}</h1>
-        <h1>Password: {{ password }}</h1>
-        <h1>Choice: {{ choice }}</h1>
-      </div>
-    </div>
+  <div class="container">
+      <ul class="list-group">
+          <li class="list-group-item" [ngStyle] = "{'font-size': a }">
+           Email: {{ email }}
+          </li>
+          <li class="list-group-item" [ngStyle] = "{'font-size': a }">
+            Password: {{ password }}
+          </li>
+          <li class="list-group-item" [ngStyle] = "{'font-size': a }">
+            Choice: {{ choice | uppercase }}
+          </li>
+      </ul>
   </div>
 </ng-template>
 

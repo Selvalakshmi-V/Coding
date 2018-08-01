@@ -32,9 +32,22 @@ button {
     font-size: 18px;
 }
 
+ul {
+    width: 400px;
+    margin-left: 350px;
+    margin-top: 60px;
+}
+
+li {
+    padding: 20px;
+}
+
 .right {
-    margin-left: 40px;
-    margin-top: 40px;
+    margin-left: 400px;
+    margin-top: 50px;
+    background-color: aqua;
+    color: rgb(234, 6, 241);
+    padding: 20px;
 }
 
 .alert {
