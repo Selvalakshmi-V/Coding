@@ -49,14 +49,13 @@ export class AppComponent implements OnInit {
     // Check whether the form is valid
     if (!post.valid)
     {
-      // this.rForm.get('email').valueChanges.subscribe(
-      //   (email) => {
-         
-      //     this.rForm.get('email').setValidators([Validators.pattern("^[a-z0-9._%+-]+@[a-z0-9.-]+\.[a-z]{2,4}$")]);
-      //     //this.error = "error";
-      //     this.rForm.get('email').updateValueAndValidity();
-      //   }
-      // )
+      this.rForm.get('email').valueChanges.subscribe(
+        (email) => {
+            this.rForm.get('email').setValidators([Validators.pattern("^[a-z0-9._%+-]+@[a-z0-9.-]+\.[a-z]{2,4}$")]);
+
+            this.rForm.get('email').updateValueAndValidity();
+          }
+      )
       this.valid = true;
     }
     else{
