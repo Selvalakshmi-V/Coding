@@ -1,126 +1,103 @@
-<div class="align" *ngIf = "!email; else forminfo">
+<div class="align" *ngIf="!email; else forminfo">
   <form [formGroup]="rForm" (ngSubmit)='addPost(rForm)'>
-   
-      <div class="alert" 
-      *ngIf="!rForm.valid && valid && reset">
-        <div class="alert" 
-        *ngIf="rForm.get('email').hasError('required')">
-        {{ emailRequired }}
-      </div> 
-     <div class="alert" 
-        *ngIf="rForm.get('email').hasError('pattern')">
-        {{ emailValid }}
+
+    <div class="alert" *ngIf="!rForm.valid && valid && reset">
+      <div class="alert" *ngIf="rForm.get('email').hasError('required')">
+        {{ errorMessages.emailRequired }}
       </div>
+      <div class="alert" *ngIf="rForm.get('email').hasError('pattern')">
+        {{ errorMessages.emailValid }}
       </div>
-    
-      <div class="alert" 
-      *ngIf="!rForm.valid && valid && reset">
+    </div>
+
+    <div class="alert" *ngIf="!rForm.valid && valid && reset">
       <!-- Using Property binding, Display the error message -->
-      <div class="alert" [hidden] = "!errorAlert(rForm,'password','required')">
-        {{ passwordRequired }}
+      <div class="alert" [hidden]="!errorAlert(rForm,'password','required')">
+        {{ errorMessages.passwordRequired }}
       </div>
-      <div class="alert" [hidden] = "!errorAlert(rForm,'password','pattern')">
-        {{ passwordMatch }}
+      <div class="alert" [hidden]="!errorAlert(rForm,'password','pattern')">
+        {{ errorMessages.passwordMatch }}
       </div>
-      </div>
+    </div>
 
 
-      <div class="form-container">
-          <div class="form-group">
-            <!-- <h1>My Reactive Form</h1> -->
-          <div class="form-group">
-            <label>Email
-              <input type="text" name="email" class="form-control"
-               formControlName="email">
-            </label>
-          </div>
+    <div class="form-container">
+      <div class="form-group">
+        <div class="form-group">
+          <label>Email
+            <input type="text" name="email" class="form-control" formControlName="email">
+          </label>
+        </div>
 
-          <div class="alert" 
+        <div class="alert" 
           *ngIf="!rForm.controls['email'].valid && rForm.controls['email'].touched">
 
           <div class="alert" 
           *ngIf="rForm.get('email').hasError('required')">
-          {{ emailRequired }}
+          {{ errorMessages.emailRequired }}
           </div> 
 
           <div class="alert" 
           *ngIf="rForm.get('email').hasError('pattern')">
-          {{ emailValid }}
+           {{ errorMessages.emailValid }}
           </div>
           
            </div>
-                  
-    
-          <div class="form-group">
-            <label>Password
-              <input type="password" class="form-control"
-               formControlName="password">
-            </label>
-         </div>   
 
-         <div class="alert" 
+
+        <div class="form-group">
+          <label>Password
+            <input type="password" class="form-control" formControlName="password">
+          </label>
+        </div>
+
+        <div class="alert" 
           *ngIf="!rForm.controls['password'].valid && rForm.controls['password'].touched">
 
           <div class="alert" 
           *ngIf="rForm.get('password').hasError('required')">
-          {{ passwordRequired }}
+          {{ errorMessages.passwordRequired }}
           </div> 
 
           <div class="alert" 
           *ngIf="rForm.get('password').hasError('pattern')">
-          {{ passwordMatch }}
+           {{ errorMessages.passwordMatch }}
           </div>
           
            </div>
-            
-          <div class="form-group">     
-            <label>Choices</label>
 
-          <select
-            formControlName="choice"
-            class="form-control"
-          >
+        <div class="form-group">
+          <label>Choices</label>
+
+          <select id="my_select" formControlName="choice" class="form-control">
             <option value="Basic">Basic</option>
 
-            <option value="Advanced" selected= "Advanced" [selected]="temp">Advanced</option>
+            <option value="Advanced" selected="Advanced" [selected]="temp">Advanced</option>
 
             <option value="Pro">Pro</option>
           </select>
-</div>
+        </div>
 
-              <button class="button expanded">Submit Form</button> 
-              <button type="reset" class="button expanded" (click) = "clearMethod()">Reset Form</button> 
-               
+        <button class="button expanded">Submit Form</button>
+        <button type="button" class="button expanded" (click)="clearMethod()">Reset Form</button>
       </div>
-      </div>
+    </div>
   </form>
 </div>
 
 
 <ng-template #forminfo>
   <div class="container">
-      <ul class="list-group">
-          <li class="list-group-item" [ngStyle] = "{'font-size': a }">
-           Email: {{ email }}
-          </li>
-          <li class="list-group-item" [ngStyle] = "{'font-size': a }">
-            Password: {{ password }}
-          </li>
-          <li class="list-group-item" [ngStyle] = "{'font-size': a }">
-            Choice: {{ choice | uppercase }}
-          </li>
-      </ul>
+    <ul class="list-group">
+      <li class="list-group-item" [ngStyle]="{'font-size': a }">
+        Email: {{ email }}
+      </li>
+      <li class="list-group-item" [ngStyle]="{'font-size': a }">
+        Password: {{ password }}
+      </li>
+      <li class="list-group-item" [ngStyle]="{'font-size': a }">
+        Choice: {{ choice | uppercase }}
+      </li>
+    </ul>
   </div>
 </ng-template>
-
-
-
-
-
-
-
-
-
-
-
-
