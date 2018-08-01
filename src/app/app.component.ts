@@ -1,6 +1,7 @@
 import { Component, OnInit  } from '@angular/core';
 import { FormBuilder, FormGroup, Validators } from '@angular/forms';
 
+
 @Component({
   selector: 'app-root',
   templateUrl: './app.component.html',
@@ -20,6 +21,7 @@ export class AppComponent implements OnInit {
   passwordMatch = ' Password must be 8 character long with at least one character and one special character';
   temp = true;
   valid = false;
+  reset = true;
   a = "20px";
 
   constructor(private fb: FormBuilder) {
@@ -39,6 +41,7 @@ export class AppComponent implements OnInit {
   }
  
   ngOnInit() {
+  
    
   }
 
@@ -72,6 +75,7 @@ export class AppComponent implements OnInit {
   clearMethod() {
     if(confirm("Are you sure to reset the form ")) {
       console.log('Reseted Successfully');  
+      this.reset = false;
     }
   }
 

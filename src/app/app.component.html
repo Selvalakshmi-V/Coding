@@ -1,8 +1,8 @@
 <div class="align" *ngIf = "!email; else forminfo">
   <form [formGroup]="rForm" (ngSubmit)='addPost(rForm)'>
    
- <div class="alert" 
-      *ngIf="!rForm.valid && valid">
+      <div class="alert" 
+      *ngIf="!rForm.valid && valid && reset">
         <div class="alert" 
         *ngIf="rForm.get('email').hasError('required')">
         {{ emailRequired }}
@@ -14,13 +14,11 @@
       </div>
     
       <div class="alert" 
-      *ngIf="!rForm.valid && valid">
-
+      *ngIf="!rForm.valid && valid && reset">
       <!-- Using Property binding, Display the error message -->
       <div class="alert" [hidden] = "!errorAlert(rForm,'password','required')">
         {{ passwordRequired }}
       </div>
-      
       <div class="alert" [hidden] = "!errorAlert(rForm,'password','pattern')">
         {{ passwordMatch }}
       </div>
@@ -36,17 +34,47 @@
                formControlName="email">
             </label>
           </div>
+
+          <div class="alert" 
+          *ngIf="!rForm.controls['email'].valid && rForm.controls['email'].touched">
+
+          <div class="alert" 
+          *ngIf="rForm.get('email').hasError('required')">
+          {{ emailRequired }}
+          </div> 
+
+          <div class="alert" 
+          *ngIf="rForm.get('email').hasError('pattern')">
+          {{ emailValid }}
+          </div>
+          
+           </div>
                   
     
-   <div class="form-group">
+          <div class="form-group">
             <label>Password
               <input type="password" class="form-control"
                formControlName="password">
             </label>
          </div>   
+
+         <div class="alert" 
+          *ngIf="!rForm.controls['password'].valid && rForm.controls['password'].touched">
+
+          <div class="alert" 
+          *ngIf="rForm.get('password').hasError('required')">
+          {{ passwordRequired }}
+          </div> 
+
+          <div class="alert" 
+          *ngIf="rForm.get('password').hasError('pattern')">
+          {{ passwordMatch }}
+          </div>
+          
+           </div>
             
- <div class="form-group">     
- <label>Choices</label>
+          <div class="form-group">     
+            <label>Choices</label>
 
           <select
             formControlName="choice"
