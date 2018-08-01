@@ -1,5 +1,5 @@
 <div class="align" *ngIf = "!email; else forminfo">
-  <form [formGroup]="rForm" #formDir="ngForm" (ngSubmit)='addPost(rForm)'>
+  <form [formGroup]="rForm" (ngSubmit)='addPost(rForm)'>
    
  <div class="alert" 
       *ngIf="!rForm.valid && valid">
