@@ -1,6 +1,7 @@
 import { Component, OnInit } from '@angular/core';
 import { FormBuilder, FormGroup, Validators } from '@angular/forms';
 import { errorMessages } from './errorMessages';
+import { CustomDirective } from './custom.directive';
 
 
 @Component({
@@ -30,9 +31,9 @@ export class AppComponent implements OnInit {
 
     //Validations
     this.rForm = this.fb.group({
-      email: [null, [Validators.compose([Validators.required, Validators.pattern("^[a-zA-Z0-9_.+-]+@+\[*[a-zA-Z0-9-]+\.+\[*[a-zA-Z0-9-.]+\]*$")])]],
+      email: [null, [Validators.compose([Validators.required, Validators.email])]],
       password: [null, [Validators.compose([Validators.required, Validators.pattern('^(?=.*[A-Za-z])(?=.*[$@$!%*#?&])[A-Za-z\d$@$!%*#?&]{8}$')])]],
-      choice: ''
+      choice: ['Advanced']
     });
   }
 
@@ -70,6 +71,11 @@ export class AppComponent implements OnInit {
     if (confirm("Are you sure to reset the form ")) {
       this.rForm.reset();
       this.reset = false;
+      this.rForm = this.fb.group({
+        email: [null],
+        password: [null],
+        choice: ['Advanced']
+      });
       console.log('Reseted Successfully');
     }
   }

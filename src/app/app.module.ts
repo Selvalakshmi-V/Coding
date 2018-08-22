@@ -3,10 +3,12 @@ import { NgModule, CUSTOM_ELEMENTS_SCHEMA } from '@angular/core';
 import { FormsModule, ReactiveFormsModule } from '@angular/forms';
 
 import { AppComponent } from './app.component';
+import { CustomDirective } from './custom.directive';
 
 @NgModule({
   declarations: [
-    AppComponent
+    AppComponent,
+    CustomDirective
   ],
   imports: [
     BrowserModule,
